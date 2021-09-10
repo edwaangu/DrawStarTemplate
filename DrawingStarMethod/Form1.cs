@@ -28,21 +28,57 @@ namespace DrawingStarMethod
             ///float size = Convert.ToSingle(sizeInput.Text); 
             
 
-            Graphics g = this.CreateGraphics();
             Pen blackPen = new Pen(Color.Black);
-            
+            try
+            {
+                DrawStar(blackPen, Convert.ToSingle(xInput.Text), Convert.ToSingle(yInput.Text), Convert.ToSingle(sizeInput.Text));
+            }
+            catch
+            {
+
+            }
 
         }
 
 
         private void fillButton_Click(object sender, EventArgs e)
         {
+            SolidBrush blueFill = new SolidBrush(Color.Blue);
+            try
+            {
+                FillStar(blueFill, Convert.ToSingle(xInput.Text), Convert.ToSingle(yInput.Text), Convert.ToSingle(sizeInput.Text));
+            }
+            catch
+            {
 
+            }
         }
 
         public void DrawStar(Pen starPen, float x, float y, float pixels)
         {
-  
+            Graphics g = this.CreateGraphics();
+            PointF[] star = new PointF[10];
+            float size;
+            for(int i = 0;i < star.Count();i++)
+            {
+                size = i % 2 == 1 ? pixels / 5 : pixels/2;
+                star[i] = new PointF(x + (pixels / 2) + Convert.ToSingle(Math.Sin((36 + i * 36) / 57.2957795)) * size, y + (pixels / 2) + Convert.ToSingle(Math.Cos((36 + i * 36) / 57.2957795)) * size);
+            }
+
+            g.DrawPolygon(starPen, star);
+        }
+        public void FillStar(SolidBrush starBrush, float x, float y, float pixels)
+        {
+            Graphics g = this.CreateGraphics();
+            PointF[] star = new PointF[10];
+            float size;
+            for (int i = 0; i < star.Count(); i++)
+            {
+                size = i % 2 == 1 ? pixels / 5 : pixels / 2;
+                star[i] = new PointF(x + (pixels / 2) + Convert.ToSingle(Math.Sin((36 + i * 36) / 57.2957795)) * size, y + (pixels / 2) + Convert.ToSingle(Math.Cos((36 + i * 36) / 57.2957795)) * size);
+            }
+
+            g.FillPolygon(starBrush, star);
         }
 
     }
