@@ -29,9 +29,15 @@ namespace DrawingStarMethod
             
 
             Pen blackPen = new Pen(Color.Black);
+
+            float starRotation = 0;
             try
             {
-                DrawStar(blackPen, Convert.ToSingle(xInput.Text), Convert.ToSingle(yInput.Text), Convert.ToSingle(sizeInput.Text));
+                if (rotateInput.Text != "")
+                {
+                    starRotation = Convert.ToSingle(rotateInput.Text);
+                }
+                DrawStar(blackPen, Convert.ToSingle(xInput.Text), Convert.ToSingle(yInput.Text), Convert.ToSingle(sizeInput.Text), starRotation);
             }
             catch
             {
@@ -44,9 +50,15 @@ namespace DrawingStarMethod
         private void fillButton_Click(object sender, EventArgs e)
         {
             SolidBrush blueFill = new SolidBrush(Color.Blue);
+
+            float starRotation = 0;
             try
             {
-                FillStar(blueFill, Convert.ToSingle(xInput.Text), Convert.ToSingle(yInput.Text), Convert.ToSingle(sizeInput.Text));
+                if (rotateInput.Text != "")
+                {
+                    starRotation = Convert.ToSingle(rotateInput.Text);
+                }
+                FillStar(blueFill, Convert.ToSingle(xInput.Text), Convert.ToSingle(yInput.Text), Convert.ToSingle(sizeInput.Text), starRotation);
             }
             catch
             {
@@ -54,7 +66,7 @@ namespace DrawingStarMethod
             }
         }
 
-        public void DrawStar(Pen starPen, float x, float y, float pixels)
+        public void DrawStar(Pen starPen, float x, float y, float pixels, float rotation = 0)
         {
             Graphics g = this.CreateGraphics();
             PointF[] star = new PointF[10];
@@ -62,12 +74,12 @@ namespace DrawingStarMethod
             for(int i = 0;i < star.Count();i++)
             {
                 size = i % 2 == 1 ? pixels / 5 : pixels/2;
-                star[i] = new PointF(x + (pixels / 2) + Convert.ToSingle(Math.Sin((36 + i * 36) / 57.2957795)) * size, y + (pixels / 2) + Convert.ToSingle(Math.Cos((36 + i * 36) / 57.2957795)) * size);
+                star[i] = new PointF(x + (pixels / 2) + Convert.ToSingle(Math.Sin((36 + rotation + i * 36) / 57.2957795)) * size, y + (pixels / 2) + Convert.ToSingle(Math.Cos((36 + rotation + i * 36) / 57.2957795)) * size);
             }
 
             g.DrawPolygon(starPen, star);
         }
-        public void FillStar(SolidBrush starBrush, float x, float y, float pixels)
+        public void FillStar(SolidBrush starBrush, float x, float y, float pixels, float rotation = 0)
         {
             Graphics g = this.CreateGraphics();
             PointF[] star = new PointF[10];
@@ -75,7 +87,7 @@ namespace DrawingStarMethod
             for (int i = 0; i < star.Count(); i++)
             {
                 size = i % 2 == 1 ? pixels / 5 : pixels / 2;
-                star[i] = new PointF(x + (pixels / 2) + Convert.ToSingle(Math.Sin((36 + i * 36) / 57.2957795)) * size, y + (pixels / 2) + Convert.ToSingle(Math.Cos((36 + i * 36) / 57.2957795)) * size);
+                star[i] = new PointF(x + (pixels / 2) + Convert.ToSingle(Math.Sin((36 + rotation + i * 36) / 57.2957795)) * size, y + (pixels / 2) + Convert.ToSingle(Math.Cos((36 + rotation + i * 36) / 57.2957795)) * size);
             }
 
             g.FillPolygon(starBrush, star);

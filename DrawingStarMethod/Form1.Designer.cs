@@ -37,11 +37,13 @@
             this.yInput = new System.Windows.Forms.TextBox();
             this.sizeInput = new System.Windows.Forms.TextBox();
             this.fillButton = new System.Windows.Forms.Button();
+            this.rotateInput = new System.Windows.Forms.TextBox();
+            this.rotateLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // drawButton
             // 
-            this.drawButton.Location = new System.Drawing.Point(331, 74);
+            this.drawButton.Location = new System.Drawing.Point(331, 100);
             this.drawButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.drawButton.Name = "drawButton";
             this.drawButton.Size = new System.Drawing.Size(57, 25);
@@ -106,7 +108,7 @@
             // 
             // fillButton
             // 
-            this.fillButton.Location = new System.Drawing.Point(331, 103);
+            this.fillButton.Location = new System.Drawing.Point(331, 129);
             this.fillButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.fillButton.Name = "fillButton";
             this.fillButton.Size = new System.Drawing.Size(57, 25);
@@ -115,12 +117,32 @@
             this.fillButton.UseVisualStyleBackColor = true;
             this.fillButton.Click += new System.EventHandler(this.fillButton_Click);
             // 
+            // rotateInput
+            // 
+            this.rotateInput.Location = new System.Drawing.Point(331, 75);
+            this.rotateInput.Margin = new System.Windows.Forms.Padding(2);
+            this.rotateInput.Name = "rotateInput";
+            this.rotateInput.Size = new System.Drawing.Size(58, 20);
+            this.rotateInput.TabIndex = 8;
+            // 
+            // rotateLabel
+            // 
+            this.rotateLabel.AutoSize = true;
+            this.rotateLabel.Location = new System.Drawing.Point(235, 79);
+            this.rotateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.rotateLabel.Name = "rotateLabel";
+            this.rotateLabel.Size = new System.Drawing.Size(94, 13);
+            this.rotateLabel.TabIndex = 9;
+            this.rotateLabel.Text = "Rotation (degrees)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.DarkKhaki;
             this.ClientSize = new System.Drawing.Size(400, 400);
+            this.Controls.Add(this.rotateLabel);
+            this.Controls.Add(this.rotateInput);
             this.Controls.Add(this.fillButton);
             this.Controls.Add(this.sizeInput);
             this.Controls.Add(this.yInput);
@@ -149,6 +171,8 @@
         private System.Windows.Forms.TextBox yInput;
         private System.Windows.Forms.TextBox sizeInput;
         private System.Windows.Forms.Button fillButton;
+        private System.Windows.Forms.TextBox rotateInput;
+        private System.Windows.Forms.Label rotateLabel;
     }
 }
 
